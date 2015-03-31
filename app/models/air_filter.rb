@@ -1,0 +1,2 @@
+class AirFilter < Part
+end
