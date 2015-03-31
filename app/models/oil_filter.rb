@@ -1,0 +1,2 @@
+class OilFilter < Part
+end

@@ -3,7 +3,41 @@
 
 <%= @machine.title %>
 
-<% @machine.parts.each do |p| %>
-<%= p.brand %>
-<%= p.part_number %>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <td>Type</td>
+      <td>Value</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @machine.parts.where("type = ?", "AirFilter").each do |p| %>
+    <tr>
+      <td><%= p.brand %></td>
+      <td><%= p.part_number %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<hr>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <td>Type</td>
+      <td>Value</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @machine.parts.where("type = ?", "OilFilter").each do |p| %>
+    <tr>
+      <td><%= p.brand %></td>
+      <td><%= p.part_number %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
