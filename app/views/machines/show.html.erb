@@ -1,0 +1,9 @@
+<h1>Show</h1>
+
+
+<%= @machine.title %>
+
+<% @machine.parts.each do |p| %>
+<%= p.brand %>
+<%= p.part_number %>
+<% end %>
