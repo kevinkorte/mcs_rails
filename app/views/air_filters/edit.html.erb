@@ -11,10 +11,11 @@
   <br>
   <hr>
   <% Machine.all.each do |machine| %>
-    <%= check_box_tag "air_filter[machine_id]", machine.id %>
+    <%= check_box_tag "air_filter[machine_ids][]", machine.id %>
     <%= machine.title %><br>
   <% end %>
   
   <%= f.submit %>
 
 <% end %>
+
