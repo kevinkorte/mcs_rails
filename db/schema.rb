@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331182229) do
+ActiveRecord::Schema.define(version: 20150331203818) do
 
   create_table "fitments", force: true do |t|
     t.integer  "part_id"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20150331182229) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "fitments", ["machine_id"], name: "index_fitments_on_machine_id"
+  add_index "fitments", ["part_id"], name: "index_fitments_on_part_id"
 
   create_table "machines", force: true do |t|
     t.string   "title"
