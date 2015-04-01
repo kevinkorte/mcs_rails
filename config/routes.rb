@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
     resources :machines
     resources :parts
+    
+    resources :air_filters, :path => '/air-filters'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

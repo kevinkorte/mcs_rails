@@ -8,9 +8,11 @@ class PartsController < ApplicationController
     end
     
     def new
+        @part = Part.new
     end
     
     def edit
+        @part = Part.find(params[:id])
     end
     
     def create
