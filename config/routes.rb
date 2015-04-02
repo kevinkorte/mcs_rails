@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   
     resources :machines
     resources :parts
+    resources :relations
+    
+    resources :fitments
     
     resources :air_filters, :path => '/air-filters'
 
