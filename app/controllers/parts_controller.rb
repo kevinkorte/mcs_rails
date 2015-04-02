@@ -1,6 +1,9 @@
 class PartsController < ApplicationController
     def index
         @part = Part.all
+        
+        @q = Part.ransack(params[:q])
+        @results = @q.result
     end
     
     def show

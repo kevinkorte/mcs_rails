@@ -14,7 +14,7 @@
 
 <div style="width: 50%">
   
-  <%= search_form_for @q do |f| %>
+  <%= search_form_for @q, url: search_relations_path do |f| %>
 
   # Search if the name field contains...
   <%= f.label :part_id_cont %>

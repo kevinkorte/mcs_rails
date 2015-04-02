@@ -1,6 +1,6 @@
 <h1>Parts Index</h1>
 
-<div style="width: 50%">
+<div style="width: 50%; float:left">
   <% @part.each do |part| %>
     <%= part.type %>
     <%= part.brand %>
@@ -12,7 +12,29 @@
 
 </div>
 
-<div style="width: 50%">
+<div style="width: 50%; float: left">
+  
+  <%= search_form_for @q do |f| %>
+
+  # Search if the name field contains...
+  <%= f.label :part_id_cont %>
+  <%= f.search_field :part_number_cont %>
+  
+  <%= f.submit %>
+  
+  <% end %>
+  
+<% @results.each do |result| %>
+
+<%= link_to result.brand, result %>
+<%= result.id %>
+<%= result.brand %>
+<%= result.part_number %>
+<br>
+    <hr>
+    <br>
+
+<% end %>
 
   
 </div>
