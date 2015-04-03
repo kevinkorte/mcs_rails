@@ -4,7 +4,7 @@
         def index
             @q = Part.ransack(params[:q])
             @results = @q.result
-            @user = Admin.find(1)
+            @user = Admin.find(current_admin)
         end
         
         def show
