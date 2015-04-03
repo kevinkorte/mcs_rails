@@ -13,6 +13,8 @@ class RelationsController < ApplicationController
     end
     
     def new
+      @part = Part.find(13)
+      @machine = Machine.find(4)
         
     end
     

@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   
     resources :machines
     resources :relations
-    
     resources :fitments
-    
- resources :parts
+    resources :parts
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: 'machines#index'
+  
+  get 'create/new' => 'relations#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

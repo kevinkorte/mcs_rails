@@ -1,6 +1,9 @@
 <h1>Edit</h1>
+<h1>Next</h1>
 
 <%= form_for @part do |f| %>
+
+<div style="width: 50%; float:left">
 
   <%= f.label :brand %>:
   <%= f.text_field :brand %>
@@ -8,11 +11,23 @@
   <%= f.label :part_number %>:
   <%= f.text_field :part_number %>
   
-  <% Machine.all.each do |machine| %>
-    <%= check_box_tag "part[machine_ids][]", machine.id %>
+</div>
+<div style="width: 50%; float:left">
+  <% @machines.each do |machine| %>
+    
+    <%= check_box_tag 'part[machine_ids][]', machine.id, @part.machines.include?(machine) %>
     <%= machine.title %>
+    
   <% end %>
   
+</div>
+<div style="width: 100%; clear:both">
   <%= f.submit %>
+</div>
+  
+  
 
 <% end %>
+
+
+

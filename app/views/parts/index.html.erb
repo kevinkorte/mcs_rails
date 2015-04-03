@@ -1,17 +1,5 @@
 <h1>Parts Index</h1>
 
-<div style="width: 50%; float:left">
-  <% @part.each do |part| %>
-    <%= part.type %>
-    <%= part.brand %>
-    <%= part.part_number %>
-    <br>
-    <hr>
-    <br>
-  <% end %>
-
-</div>
-
 <div style="width: 50%; float: left">
   
   <%= search_form_for @q do |f| %>
@@ -26,7 +14,7 @@
   
 <% @results.each do |result| %>
 
-<%= link_to result.brand, result %>
+<%= link_to result.brand, edit_part_path(result) %>
 <%= result.id %>
 <%= result.brand %>
 <%= result.part_number %>
