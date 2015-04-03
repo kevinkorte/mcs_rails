@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :admins
+
+  #http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html
+  scope "/admin" do
+    resources :parts
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
     resources :machines
     resources :relations
     resources :fitments
-    resources :parts
 
 
   # You can have the root of your site routed with "root"

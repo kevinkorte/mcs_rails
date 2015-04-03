@@ -1,9 +1,10 @@
 
     class PartsController < ApplicationController
-
+        before_action :authenticate_admin!
         def index
             @q = Part.ransack(params[:q])
             @results = @q.result
+            @user = Admin.find(1)
         end
         
         def show
