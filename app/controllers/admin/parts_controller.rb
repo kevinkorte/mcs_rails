@@ -1,10 +1,10 @@
 
-    class PartsController < ApplicationController
+    class Admin::PartsController < ApplicationController
         before_action :authenticate_admin!
         def index
             @q = Part.ransack(params[:q])
             @results = @q.result
-            @user = Admin.find(current_admin)
+
         end
         
         def show
@@ -13,6 +13,7 @@
         
         def new
             @part = Part.new
+            @machines = Machine.all
         end
         
         def edit
@@ -21,6 +22,12 @@
         end
         
         def create
+           @part = Part.new(new_params)
+           if @part.save
+               redirect_to admin_parts_path
+           else
+               render 'new'
+           end
         end
         
         def update
@@ -35,11 +42,18 @@
         end
     
         def destroy
+            Part.find(params[:id]).destroy
+            flash[:notice] = "Part Deleted Successfully"
+            redirect_to admin_parts_path
         end
         
         private
         
         def update_params
+            params.require(:part).permit(:brand, :part_number)
+        end
+        
+        def new_params
             params.require(:part).permit(:brand, :part_number)
         end
     end

@@ -1,4 +1,5 @@
 class AirFiltersController < ApplicationController
+    before_action :authenticate_admin!
     def index
         @airfilter = AirFilter.all
     end

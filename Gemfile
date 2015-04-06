@@ -7,7 +7,7 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.3.4'
 
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

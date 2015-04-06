@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="page-header">
+    <h1>New Part</h1>
+  </div>
+  
+  <div class="col-md-12 btn-group-wrapper">
+    <%= link_to "All Parts", admin_parts_path, class: "btn btn-default pull-right" %>
+  </div>
+
+  <%= simple_form_for @part, url: admin_parts_path, html: {class: 'form-horizontal' } do |f| %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :brand, class: 'col-md-3' %>
+        <div class="col-sm-9">
+          <%= f.text_field :brand, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :part_number, class: 'col-md-3' %>
+        <div class="col-sm-9">
+          <%= f.text_field :part_number, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <ul class="list-group">
+      <% @machines.each do |machine| %>
+      <li class="list-group-item">
+        <%= check_box_tag 'part[machine_ids][]', machine.id, @part.machines.include?(machine) %>
+        <%= machine.title %>
+      </li>
+      <% end %>
+      </ul>
+    </div>
+    
+    <%= f.submit :class => 'btn btn-lg btn-block btn-success' %>
+  
+  
+  <% end %>
+  
+</div>
