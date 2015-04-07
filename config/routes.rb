@@ -1,26 +1,28 @@
 Rails.application.routes.draw do
+
   #Custom routes used by devise
   #http://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
   devise_for :admins, :path => 'admin'
+  
 
   #http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html
   namespace "admin" do
-    resources :parts
-    resources :airfilters
+    resources :parts, :except => [:new]
+    resources :air_filters, :path => "airfilter", :as => "airfilter"
+    resources :machines
   end
+
+  
   
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
-    resources :machines
-    resources :airfilters
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root to: 'machines#index'
   
-  get 'create/new' => 'relations#new'
 
 
   # Example of regular route:

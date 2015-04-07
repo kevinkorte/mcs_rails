@@ -1,0 +1,32 @@
+<div class="container">
+  
+  <div class="page-header">
+    <h1>New Machine</h1>
+  </div>
+
+  <%= form_for @machine, url: admin_machines_path, html: {class: 'form-horizontal' } do |f| %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :title, class: 'col-md-3' %>
+        <div class="col-sm-9">
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">(<%=@list_all_m.count%>) Machines</div>
+          <ul class="list-group">
+          <% @list_all_m.each do |machine| %>
+            <li class="list-group-item">
+              <p class="lead"><%= machine.title %></p>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+      
+      <%= f.submit :class => 'btn btn-lg btn-block btn-success' %>
+  
+  <% end %>
+</div>

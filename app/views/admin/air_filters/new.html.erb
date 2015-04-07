@@ -1,0 +1,40 @@
+<div class="container">
+  
+  <div class="page-header">
+    <h1>New Air Filter</h1>
+  </div>
+
+  <%= form_for @airfilter, url: admin_airfilter_index_path, html: {class: 'form-horizontal' } do |f| %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :brand, class: 'col-md-3' %>
+        <div class="col-sm-9">
+          <%= f.text_field :brand, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :part_number, class: 'col-md-3' %>
+        <div class="col-sm-9">
+          <%= f.text_field :part_number, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">(<%=@list_all_af.count%>) Air Filters</div>
+          <ul class="list-group">
+          <% @list_all_af.each do |airfilter| %>
+            <li class="list-group-item">
+              <p><strong><%= airfilter.brand %></strong></p>
+              <p class="lead"><%= airfilter.part_number %></p>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+      
+      <%= f.submit :class => 'btn btn-lg btn-block btn-success' %>
+  
+  <% end %>
+
+</div>

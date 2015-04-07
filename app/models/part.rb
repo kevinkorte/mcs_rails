@@ -11,4 +11,5 @@ class Part < ActiveRecord::Base
             self.fitments.create(:machine_id => machine_id) unless fitments.any? { |d| d.machine_id == machine_id }
         end
     end
+    
 end

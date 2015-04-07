@@ -5,8 +5,8 @@
   <div class="col-md-12 btn-group-wrapper">
     <div class="btn-group pull-right" role="group" aria-label="...">
       <%= link_to "Back", admin_part_path, class: "btn btn-default" %>
-      <%= link_to "New", new_admin_part_path, class: "btn btn-default" %>
-      <%= link_to "All Parts", admin_parts_path, class: "btn btn-default" %>
+      <%= render "layouts/new_button" %>
+      <%= link_to "All Parts", admin_parts_path, class: "btn btn-info" %>
       <%= link_to "Delete", admin_part_path, class: "btn btn-danger", method: :delete, data: {confirm: "Are You Sure"} %>
     </div>
   </div>

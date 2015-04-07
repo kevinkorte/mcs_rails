@@ -1,4 +1,4 @@
-class AirFiltersController < ApplicationController
+class Admin::AirFiltersController < ApplicationController
     before_action :authenticate_admin!
     def index
         @airfilter = AirFilter.all
@@ -10,6 +10,7 @@ class AirFiltersController < ApplicationController
     
     def new
         @airfilter = AirFilter.new
+        @list_all_af = AirFilter.all.order(created_at: :desc)
     end
     
     def edit
@@ -19,7 +20,7 @@ class AirFiltersController < ApplicationController
     def create
         @airfilter = AirFilter.new(airfilter_params)
         if @airfilter.save
-            redirect_to @airfilter
+            redirect_to admin_parts_path
         else
             render :new
         end
@@ -28,7 +29,7 @@ class AirFiltersController < ApplicationController
     def update
       @airfilter = AirFilter.find(params[:id])
       if @airfilter.update_attributes(airfilter_params)
-        flash[:success] = "Update Successful"
+        flash[:success] = "Updated Successfully!"
         redirect_to @airfilter
       else
         render 'edit'
@@ -40,6 +41,7 @@ class AirFiltersController < ApplicationController
     
     private
         def airfilter_params
-            params.require(:air_filter).permit(:brand, :part_number)
+            params.require(:part).permit(:brand, :part_number)
         end
+  
 end

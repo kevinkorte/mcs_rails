@@ -8,7 +8,7 @@
         end
         
         def show
-            @part = Part.find(params[:id])
+             @part = Part.find(params[:id])
         end
         
         def new
@@ -43,7 +43,7 @@
     
         def destroy
             Part.find(params[:id]).destroy
-            flash[:notice] = "Part Deleted Successfully"
+            flash[:notice] = "Part Successfully Deleted!"
             redirect_to admin_parts_path
         end
         
