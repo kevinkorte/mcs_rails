@@ -11,6 +11,8 @@ gem 'simple_form', '~> 3.1.0.rc1'
 
 gem 'will_paginate', '~> 3.0.6'
 
+gem 'bootstrap-will_paginate'
+
 gem 'friendly_id', '~> 5.1.0'
 
 
