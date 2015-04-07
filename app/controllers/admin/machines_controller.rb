@@ -1,12 +1,12 @@
 class Admin::MachinesController < ApplicationController
-    before_action :authenticate_admin!
+    before_action :authenticate_admin!, except => [:index, :show]
     def index
         @machine = Machine.ransack(params[:q])
         @results = @machine.result.paginate(:page => params[:page])
     end
     
     def show
-        @machine = Machine.find(params[:id])
+        @machine = Machine.friendly.find(params[:id])
     end
     
     def new
@@ -15,7 +15,7 @@ class Admin::MachinesController < ApplicationController
     end
     
     def edit
-        @machine = Machine.find(params[:id])
+        @machine = Machine.friendly.find(params[:id])
         @parts = Part.all
     end
     

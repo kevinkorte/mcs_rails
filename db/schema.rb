@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403173409) do
+ActiveRecord::Schema.define(version: 20150407153308) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -46,7 +46,10 @@ ActiveRecord::Schema.define(version: 20150403173409) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "machines", ["slug"], name: "index_machines_on_slug"
 
   create_table "parts", force: true do |t|
     t.string   "brand"
