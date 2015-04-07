@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   #http://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
   devise_for :admins, :path => 'admin'
   
+  resources :machines, only: [:index, :show]
 
   #http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html
   namespace "admin" do
@@ -12,8 +13,7 @@ Rails.application.routes.draw do
     resources :machines
   end
 
-  
-  
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

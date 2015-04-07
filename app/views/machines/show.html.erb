@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="page-header">
+    <h1><%= @machine.title %></h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Air Filters</div>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Brand</th>
+              <th>Part Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @machine.parts.where("type = ?", "AirFilter").each do |a| %>
+              <tr>
+                <td><%= a.brand %></td>
+                <td><%= a.part_number %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

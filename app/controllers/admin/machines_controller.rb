@@ -1,5 +1,5 @@
 class Admin::MachinesController < ApplicationController
-    before_action :authenticate_admin!, except => [:index, :show]
+    before_action :authenticate_admin!
     def index
         @machine = Machine.ransack(params[:q])
         @results = @machine.result.paginate(:page => params[:page])
