@@ -2,7 +2,7 @@ class Admin::MachinesController < ApplicationController
     before_action :authenticate_admin!
     def index
         @machine = Machine.ransack(params[:q])
-        @results = @machine.result
+        @results = @machine.result.paginate(:page => params[:page])
     end
     
     def show
@@ -11,7 +11,7 @@ class Admin::MachinesController < ApplicationController
     
     def new
         @machine = Machine.new
-        @list_all_m = Machine.all.order(created_at: :desc)
+        @list_all_m = Machine.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
     
     def edit

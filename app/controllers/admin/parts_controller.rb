@@ -3,8 +3,7 @@
         before_action :authenticate_admin!
         def index
             @q = Part.ransack(params[:q])
-            @results = @q.result
-
+            @results = @q.result.paginate(:page => params[:page])
         end
         
         def show

@@ -9,6 +9,8 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'simple_form', '~> 3.1.0.rc1'
 
+gem 'will_paginate', '~> 3.0.6'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'

@@ -10,7 +10,7 @@ class Admin::AirFiltersController < ApplicationController
     
     def new
         @airfilter = AirFilter.new
-        @list_all_af = AirFilter.all.order(created_at: :desc)
+        @list_all_af = AirFilter.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
     
     def edit
