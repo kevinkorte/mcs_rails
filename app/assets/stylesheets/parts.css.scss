@@ -5,6 +5,11 @@
 tr {
   cursor: pointer;
 }
+table.user-show {
+  tr {
+    cursor: auto;
+  }
+}
 .btn-group-wrapper {
   margin-bottom: 40px;
 }

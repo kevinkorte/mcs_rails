@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title><%= content_for?(:title) ? content_for(:title) : "Machine Cheat Sheet" %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -51,6 +51,20 @@
       </p>
     </div>
   <% end %>
+  
+  <div class="container">
+    <div class="panel panel-warning">
+      <div class="panel-heading"><span class="glyphicon glyphicon-exclamation-sign"></span> Pre-launch Notice</div>
+      <div class="panel-body">
+        <p>This site is currently being developed. You are welcome to use this site if it
+        is helpful to you. Just be aware that during this time, you my experience
+        missing pages, broken layouts, or other unwanted behaviors. In addition the website
+        may not be availabe at times. Also expect the layout and design of this site to change drastically at any time, as
+        it's current apperance is only temporary.</p>
+        <p>I do hope that you find this site helpful, and check back as I add more information.</p>
+      </div>
+    </div>
+  </div>
 
 <%= yield %>
 
