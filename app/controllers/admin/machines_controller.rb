@@ -2,7 +2,7 @@ class Admin::MachinesController < ApplicationController
     before_action :authenticate_admin!
     def index
         @machine = Machine.ransack(params[:q])
-        @results = @machine.result.paginate(:page => params[:page])
+        @results = @machine.result.order(created_at: :desc).paginate(:page => params[:page])
     end
     
     def show
@@ -11,6 +11,9 @@ class Admin::MachinesController < ApplicationController
     
     def new
         @machine = Machine.new
+        @machine.build_year
+        @machine.build_make
+        @machine.build_model
         @list_all_m = Machine.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
     
@@ -30,7 +33,7 @@ class Admin::MachinesController < ApplicationController
     end
     
     def update
-        @machine = Machine.find(params[:id])
+        @machine = Machine.friendly.find(params[:id])
         if @machine.attributes = {'part_ids' => []}.merge(params[:machine] || {})
             @machine.update_attributes(machine_params)
             flash[:success] = "Updated Successfully!"
@@ -41,14 +44,17 @@ class Admin::MachinesController < ApplicationController
     end
 
     def destroy
-        Part.find(params[:id]).destroy
+        Machine.friendly.find(params[:id]).destroy
         flash[:notice] = "Part Successfully Deleted!"
-        redirect_to admin_machine_path
+        redirect_to admin_machines_path
     end
     
     private
         def machine_params
-            params.require(:machine).permit(:title)
+            params.require(:machine).permit(:id, :title, 
+                                            year_attributes: [:id, :year],
+                                            make_attributes: [:id, :make],
+                                            model_attributes: [:id, :model])
         end
     
 end

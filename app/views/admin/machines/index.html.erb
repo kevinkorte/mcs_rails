@@ -31,7 +31,8 @@
             <tr>
               <th>ID</th>
               <th>Title</th>
-              <th>Parts</th>
+              <th>Type</th>
+              <th>Year</th>
             </tr>
           </thead>
           <tbody>
@@ -39,12 +40,8 @@
               <tr data-link="<%= edit_admin_machine_path(result)%>">
                 <td><%= result.id %></td>
                 <td><%= link_to result.title, edit_admin_machine_path(result) %></td>
-                <td>
-                  <% result.parts.map do |part| %>
-                    <%= part.brand %> <%= part.part_number %>
-                    <span class="glyphicon glyphicon-minus"></span>
-                  <% end %>
-                </td>
+                <td><%= result.type %></td>
+                <td><%= result.year %></td>
               </tr>
             <% end %>
           </tbody>

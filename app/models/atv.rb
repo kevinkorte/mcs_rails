@@ -1,0 +1,2 @@
+class Atv < Machine
+end

@@ -12,6 +12,30 @@
           <%= f.text_field :title, class: 'form-control' %>
         </div>
       </div>
+      <div class="form-group">
+        <%= f.fields_for :year do |y| %>
+        <%= y.label :year, class: 'col-md-3' %>
+          <div class="col-sm-9">
+            <%= y.text_field :year, class: 'form-control' %>
+          </div>
+       <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.fields_for :make do |make| %>
+        <%= make.label :make, class: 'col-md-3' %>
+          <div class="col-sm-9">
+            <%= make.text_field :make, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.fields_for :model do |model| %>
+        <%= model.label :model, class: 'col-md-3' %>
+          <div class="col-sm-9">
+            <%= model.text_field :model, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-default">
