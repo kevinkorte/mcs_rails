@@ -15,4 +15,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-@import "parts";
+ @import "parts";
+ 
+ .navbar-default {
+  background-color: #fff;
+ }

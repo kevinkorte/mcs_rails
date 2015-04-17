@@ -11,9 +11,7 @@ class Admin::MachinesController < ApplicationController
     
     def new
         @machine = Machine.new
-        @machine.build_year
-        @machine.build_make
-        @machine.build_model
+        @machine.categorizations.build.build_term
         @list_all_m = Machine.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
     
@@ -49,12 +47,15 @@ class Admin::MachinesController < ApplicationController
         redirect_to admin_machines_path
     end
     
+     def term_attributes=(attributes)
+            self.title = Term.find_or_create_by_name(attributes[:name])
+     end
+    
+    
     private
         def machine_params
-            params.require(:machine).permit(:id, :title, 
-                                            year_attributes: [:id, :year],
-                                            make_attributes: [:id, :make],
-                                            model_attributes: [:id, :model])
+            params.require(:machine).permit(:id, :title,
+                                            categorizations_attributes: [
+                                            term_attributes: [:id, :name]])
         end
-    
 end
