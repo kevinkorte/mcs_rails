@@ -22,16 +22,9 @@
       </div>
       
       <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav pull-right">
           <li><%= link_to "All Machines", machines_path %></li>
         </ul>
-        <%= search_form_for @machines, url: machines_path, :html => {:class => "navbar-form navbar-left", :role => "search"} do |f| %>
-          <div class="form-group">
-            <div class="sr-only"><%= f.label :title_cont %></div>
-            <%= f.search_field :title_cont, :class => "form-control", :placeholder => "Search by Machine" %>
-          </div>
-          <%= f.submit nil, :class => "btn btn-primary" %>
-        <% end %>
       </div>
     </div>
   </nav>
@@ -53,16 +46,14 @@
   <% end %>
   
   <div class="container">
-    <div class="panel panel-warning">
-      <div class="panel-heading"><span class="glyphicon glyphicon-exclamation-sign"></span> Pre-launch Notice</div>
-      <div class="panel-body">
-        <p>This site is currently being developed. You are welcome to use this site if it
-        is helpful to you. Just be aware that during this time, you my experience
-        missing pages, broken layouts, or other unwanted behaviors. In addition the website
-        may not be availabe at times. Also expect the layout and design of this site to change drastically at any time, as
-        it's current apperance is only temporary.</p>
-        <p>I do hope that you find this site helpful, and check back as I add more information.</p>
-      </div>
+    <div class="col-md-8 col-md-offset-2">
+      <%= search_form_for @machines, url: machines_path, :html => {:role => "search"} do |f| %>
+        <div class="form-group">
+          <div class="sr-only"><%= f.label :title_cont %></div>
+            <%= f.search_field :title_cont, :class => "form-control input-lg typeahead", :placeholder => "Search by Machine" %>
+          </div>
+        <%= f.submit :name => nil, :class => "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 

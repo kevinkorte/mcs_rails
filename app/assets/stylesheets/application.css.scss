@@ -17,6 +17,25 @@
 
  @import "parts";
  
- .navbar-default {
-  background-color: #fff;
+ body {
+  background: #fafafa;
  }
+ .navbar-default {
+  background-color: transparent;
+  border-bottom: none;
+ }
+ .form-control {
+  border: 1px solid #cacaca;
+  border-radius: 2px;
+  
+   &:focus {
+    box-shadow: none;
+   }
+ }
+ 
+ /******************************************************************
+ 
+ BUTTONS
+ 
+ *******************************************************************/
+ 
