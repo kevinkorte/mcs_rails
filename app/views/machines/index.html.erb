@@ -15,19 +15,22 @@
             </tr>
           </thead>
           <tbody>
-            <% @results.each do |result| %>
-              <tr data-link="<%= machine_path(result)%>">
-                <td><%= link_to result.title, machine_path(result) %></td>
-              </tr>
-            <% end %>
-          </tbody>
+           
         </table>
       </div>
-      <%= will_paginate @results %>
+
     </div>
     
   </div>
 </div>
+
+<ul>
+  <% for machine in @machines %>
+  <li>
+    <%= machine.title %>
+  </li>
+  <% end %>
+</ul>
 
 <script>
   $("tr[data-link]").click(function() {

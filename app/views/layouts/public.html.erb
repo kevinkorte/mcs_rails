@@ -18,7 +18,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to ("Machine Cheat Sheet <span class='label label-warning'>Beta</span>").html_safe, root_path, :class => "navbar-brand" %>
+        <%= link_to (" <span class='label label-warning'>Beta</span>").html_safe, root_path, :class => "navbar-brand" %>
       </div>
       
       <div class="collapse navbar-collapse">
@@ -46,14 +46,19 @@
   <% end %>
   
   <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-      <%= search_form_for @machines, url: machines_path, :html => {:role => "search"} do |f| %>
-        <div class="form-group">
-          <div class="sr-only"><%= f.label :title_cont %></div>
-            <%= f.search_field :title_cont, :class => "form-control input-lg typeahead", :placeholder => "Search by Machine" %>
-          </div>
-        <%= f.submit :name => nil, :class => "btn btn-success" %>
-      <% end %>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+
+          <%= form_tag machines_path, :method => 'get', :class => 'search-form' do %>
+              <%= text_field_tag :search, params[:search], class: "typeahead search-form-input", placeholder: "Search by Machine" %>
+
+                <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
+
+
+          <% end %>
+
+              
+      </div><!-- /.col-lg-6 -->
     </div>
   </div>
 

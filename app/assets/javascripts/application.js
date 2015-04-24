@@ -15,4 +15,4 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require typeahead.bundle.min
-//= require typeahead
+//= require machines_controller

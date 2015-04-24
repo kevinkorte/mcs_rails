@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'ransack'
+
 
 gem 'devise'
 
