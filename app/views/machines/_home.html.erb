@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class = "lead">A growing library of <%= @machine.count %> machines and <%= @parts.count %> parts
+        providing fast, accurate information to the most common maintenance questions.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3 search-form-wrapper">
+        <p>Example: <strong>2015 Polaris RZR 900</strong></p>
+        <%= form_tag machines_path, :method => 'get', :class => 'search-form' do %>
+            <%= text_field_tag :search, params[:search], class: "typeahead search-form-input", placeholder: "Search by Machine" %>
+            <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
+        <% end %>
+      </div><!-- /.col-lg-6 -->
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <h3>Here is a live example <small>for a <%= @unit.title %></small></h3>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Part Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @unit.parts.where("type = ?", "AirFilter").each do |u| %>
+            <tr>
+              <td><%= u.brand %></td>
+              <td><%= u.part_number %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

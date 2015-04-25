@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :air_filters, :path => "airfilter", :as => "airfilter"
     resources :machines
   end
+  
+  get 'machines/queries/:search' => "machines#queries"
 
 
   

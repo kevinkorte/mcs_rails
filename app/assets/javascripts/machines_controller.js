@@ -3,14 +3,11 @@ $(document).ready(function() {
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   limit: 10,
-  prefetch: {
-    // url points to a json file that contains an array of country names, see
-    // https://github.com/twitter/typeahead.js/blob/gh-pages/data/countries.json
-    url: 'https://mcs-kevinkorte-5.c9.io/machines.json',
-    // the json file contains an array of strings, but the Bloodhound
-    // suggestion engine expects JavaScript objects so this converts all of
-    // those strings
-  }
+  prefetch: '/machines.json',
+  remote: '/machines/queries/%QUERY.json',
+  dupDetector: function(remoteMatch, localMatch) {
+    return remoteMatch.value === localMatch.value;
+}
 });
  
 // kicks off the loading/processing of `local` and `prefetch`

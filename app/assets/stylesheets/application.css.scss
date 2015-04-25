@@ -16,11 +16,7 @@
  @import "bootstrap";
 
  @import "parts";
-
- .navbar-default {
-  background-color: transparent;
-  border-bottom: none;
- }
+ 
  .form-control {
   border: 1px solid #cacaca;
   border-radius: 2px;
@@ -30,9 +26,24 @@
    }
  }
  
+ .search-form .btn.btn-default {
+    margin-top: 7px;
+    float: right;
+  }
+  
+  .search-form-wrapper {
+    padding: 28px 0;
+  }
+  .search-form {
+    margin: 18px 0;
+  }
+
+
+
+ 
  /******************************************************************
  
- BUTTONS
+ TYPEAHEAD
  
  *******************************************************************/
 
@@ -51,11 +62,6 @@
       background-color: lighten(#dbdde0, 11%) !important;
       outline: none;
     }
-}
-
-.search-form .btn.btn-default {
-  margin-top: 7px;
-  float: right;
 }
 
 .tt-dropdown-menu {
