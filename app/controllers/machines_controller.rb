@@ -4,12 +4,12 @@ class MachinesController < ApplicationController
     @machines = Machine.search(params[:search])
     @parts = Part.all
     @unit = Machine.friendly.first
+    @machinelist = Machine.all.friendly.paginate(:page => params[:page], :per_page => 30)
     @machine = Machine.all
     respond_to do |format|
       format.html
       format.json { render json: @machine.to_json(:only => [:title, :slug]) }
     end
-    
   end
   
   def show

@@ -8,10 +8,7 @@
     <div class="row">
       <div class="col-lg-6 col-lg-offset-3 search-form-wrapper">
         <p>Example: <strong>2015 Polaris RZR 900</strong></p>
-        <%= form_tag machines_path, :method => 'get', :class => 'search-form' do %>
-            <%= text_field_tag :search, params[:search], class: "typeahead search-form-input", placeholder: "Search by Machine" %>
-            <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
-        <% end %>
+        <%= render partial: "search_form" %>
       </div><!-- /.col-lg-6 -->
     </div>
     <div class="col-sm-8 col-sm-offset-2">

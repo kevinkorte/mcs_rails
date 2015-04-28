@@ -16,8 +16,9 @@
         end
         
         def edit
+            @q = Machine.ransack(params[:q])
             @part = Part.find(params[:id])
-            @machines = Machine.all
+            @machines = @q.result
         end
         
         def create

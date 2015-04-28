@@ -49,9 +49,11 @@
   
   <% if current_page?("/") %>
     <%= render partial: "home" %>
+  <% elsif current_page?("/machines")%>
+    <%= render partial: "machines" %>
+  <% else %>
+    <%= yield %>
   <% end %>
-
-  <%= yield %>
 
 
 <div class="container">

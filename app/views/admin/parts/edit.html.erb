@@ -10,9 +10,22 @@
       <%= link_to "Delete", admin_part_path, class: "btn btn-danger", method: :delete, data: {confirm: "Are You Sure"} %>
     </div>
   </div>
+  
+  
+      <%= search_form_for @q, url: admin_machines_path, :html => {:class => "form-inline"} do |f| %>
+        <div class="form-group">
+          <%= f.label :machine_title_cont %>
+          <%= f.search_field :title_cont, :class => "form-control" %>
+        </div>
+        <%= f.submit nil, :class => "btn btn-default" %>
+      <% end %>
+  
+  
+
+    <div class="col-md-6">
+
 
   <%= simple_form_for @part, url:admin_part_path, html: {class: 'form-horizontal' } do |f| %>
-    <div class="col-md-6">
       <div class="form-group">
         <%= f.label :brand, class: 'col-md-3' %>
         <div class="col-sm-9">
@@ -27,6 +40,9 @@
       </div>
     </div>
     <div class="col-md-6">
+      
+      
+      
       <ul class="list-group">
       <% @machines.each do |machine| %>
       <li class="list-group-item">

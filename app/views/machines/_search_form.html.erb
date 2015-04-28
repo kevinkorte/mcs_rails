@@ -1,0 +1,4 @@
+<%= form_tag machines_path, :method => 'get', :class => 'search-form' do %>
+  <%= text_field_tag :search, params[:search], class: "typeahead search-form-input", placeholder: "Search by Machine" %>
+  <%= submit_tag "Search", :name => nil, :class => "btn btn-default" %>
+<% end %>

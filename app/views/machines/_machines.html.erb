@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="search-form-wrapper">
+        <%= render partial: "search_form" %>
+      </div>
+      <div class="panel panel-default machine-list">
+        <div class="panel-heading">(<%=@machine.count%>) Machine List</div>
+        <div class="list-group">
+        <% @machinelist.each do |l| %>
+          <%= link_to l.title, machine_path(l), :class => "list-group-item" %>
+        <% end %>
+      </div>
+    </div>
+     <%= will_paginate @machinelist %>
+  </div>
+</div>
