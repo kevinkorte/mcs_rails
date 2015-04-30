@@ -17,3 +17,4 @@
 //= require turbolinks
 //= require typeahead.bundle.min
 //= require machines_controller
+//= require admin_ajax.js

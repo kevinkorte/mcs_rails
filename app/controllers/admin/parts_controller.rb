@@ -16,9 +16,9 @@
         end
         
         def edit
-            @q = Machine.ransack(params[:q])
             @part = Part.find(params[:id])
-            @machines = @q.result
+            @all_machines = Machine.all
+            @machines = Machine.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
         end
         
         def create

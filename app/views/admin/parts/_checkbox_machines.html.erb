@@ -1,0 +1,7 @@
+
+    <% @machines.each do |machine| %>
+    <li class="list-group-item">
+      <%= check_box_tag 'part[machine_ids][]', machine.id, @part.machines.include?(machine), class: "machine-checkbox" %>
+      <%= machine.title %>
+    </li>
+    <% end %>
