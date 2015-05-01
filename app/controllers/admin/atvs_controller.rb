@@ -11,6 +11,7 @@ class Admin::AtvsController < ApplicationController
     
     def create
         @atv = Atv.new(atv_params)
+        @list_all_atv = Atv.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
         if @atv.save
             redirect_to new_admin_atv_path
         else
