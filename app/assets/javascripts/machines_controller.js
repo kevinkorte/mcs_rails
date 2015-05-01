@@ -3,11 +3,10 @@ $(document).ready(function() {
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   limit: 10,
-  prefetch: '/machines.json',
-  remote: '/machines/queries/%QUERY.json',
-  dupDetector: function(remoteMatch, localMatch) {
-    return remoteMatch.value === localMatch.value;
-}
+  remote: {
+    url: '/machines/queries/%QUERY.json',
+    wildcard: '%QUERY'
+  }
 });
  
 // kicks off the loading/processing of `local` and `prefetch`
