@@ -1,0 +1,34 @@
+<div class="container">
+  
+  <div class="page-header">
+    <h1>New Snowmobile</h1>
+  </div>
+
+  <%= form_for @snowmobile, url: admin_snowmobile_index_path, html: {class: 'form-horizontal' } do |f| %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :title, class: 'col-md-3' %>
+        <div class="col-sm-9">
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">(<%=@list_all_snowmobile.count%>) Snowmobile</div>
+          <ul class="list-group">
+          <% @list_all_snowmobile.each do |snowmobile| %>
+            <li class="list-group-item">
+              <p><strong><%= snowmobile.title %></strong></p>
+            </li>
+          <% end %>
+          </ul>
+          <%= will_paginate @list_all_snowmobile %>
+        </div>
+      </div>
+      
+      <%= f.submit :class => 'btn btn-lg btn-block btn-success' %>
+  
+  <% end %>
+
+</div>

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resources :parts, :except => [:new]
     resources :air_filters, :path => "airfilter", :as => "airfilter"
     resources :machines
+    resources :atvs, :path => "atv", :as => "atv"
+    resources :motorcycles, :path => "motorcycle", :as => "motorcycle"
+    resources :snowmobiles, :path => "snowmobile", :as => "snowmobile"
   end
   
   get 'machines/queries/:search' => "machines#queries"

@@ -1,0 +1,2 @@
+class Snowmobile < Machine
+end
