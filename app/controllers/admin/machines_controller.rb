@@ -54,8 +54,6 @@ class Admin::MachinesController < ApplicationController
     
     private
         def machine_params
-            params.require(:machine).permit(:id, :title,
-                                            categorizations_attributes: [
-                                            term_attributes: [:id, :name]])
+            params.require(:atv).permit(:id, :title)
         end
 end
