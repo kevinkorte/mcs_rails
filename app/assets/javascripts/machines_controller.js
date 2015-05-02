@@ -2,7 +2,7 @@ $(document).ready(function() {
   var machines = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  limit: 10,
+  limit: 15,
   remote: {
     url: '/machines/queries/%QUERY.json',
     wildcard: '%QUERY'

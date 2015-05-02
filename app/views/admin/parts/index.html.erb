@@ -37,7 +37,6 @@
               <th>Type</th>
               <th>Brand</th>
               <th>Part Number</th>
-              <th>Fitment</th>
             </tr>
           </thead>
           <tbody>
@@ -47,13 +46,8 @@
                 <td><%= result.type %></td>
                 <td><%= result.brand %></td>
                 <td><%= link_to result.part_number, edit_admin_part_path(result) %></td>
-                <td>
-                  <% result.machines.map do |machine| %>
-                    <%= machine.title %>,
-                  <% end %>
-                </td>
+              <% end %>
               </tr>
-            <% end %>
           </tobdy>
         </table>
       </div>

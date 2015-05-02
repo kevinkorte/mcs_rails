@@ -4,6 +4,7 @@
         def index
             @q = Part.ransack(params[:q])
             @results = @q.result.paginate(:page => params[:page])
+            @parts = Part.all
         end
         
         def show
