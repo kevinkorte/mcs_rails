@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+  devise_for  :users,
+              :path => '',
+              :path_names => {:sign_in => 'sign-in', :sign_out => 'sign-out', :sign_up => 'register' },
+              controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   #Custom routes used by devise
   #http://stackoverflow.com/questions/3827011/devise-custom-routes-and-login-pages
   devise_for :admins, :path => 'admin'
+  
+  resources :users, only: [:show]
   
   resources :machines, only: [:index, :show]
 
@@ -16,6 +22,7 @@ Rails.application.routes.draw do
     resources :snowmobiles, :path => "snowmobile", :as => "snowmobile"
   end
   
+  #Sets route for typeahead.js remote query. Generates a JSON response
   get 'machines/queries/:search' => "machines#queries"
 
 
