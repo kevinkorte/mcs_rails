@@ -18,6 +18,8 @@ gem 'bootstrap-will_paginate'
 
 gem 'friendly_id', '~> 5.1.0'
 
+gem 'stripe'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'

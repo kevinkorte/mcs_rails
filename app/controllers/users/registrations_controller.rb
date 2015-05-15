@@ -9,9 +9,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+   super do
+    customer = Stripe::Customer.create(
+      :email => params[:user][:email],
+      #:source  => params[:stripeToken],
+      :plan => 'free'
+    )
+    @user =User.find_by_email(params[:user][:email])
+    @user.stripe_customer_id = customer.id
+    @plan = Plan.find_by(:stripe_plan_id => customer.subscriptions.data.first['plan'].id)
+    @user.plan_id = @plan.id
+    @user.stripe_end_date = customer.subscriptions.data.first.current_period_end
+    @user.stripe_subscription_id = customer.subscriptions.data.first.id
+   end
+    
+  end
 
   # GET /resource/edit
   # def edit

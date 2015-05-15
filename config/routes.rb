@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  devise_scope :user do
+    namespace :users do
+      get ':id/settings', to: 'static_pages#settings'
+    end
+  end
 
   devise_for  :users,
               :path => '',
@@ -9,8 +15,11 @@ Rails.application.routes.draw do
   devise_for :admins, :path => 'admin'
   
   resources :users, only: [:show]
+  resources :subscriptions
+  resources :cards
   
   resources :machines, only: [:index, :show]
+  
 
   #http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html
   namespace "admin" do
@@ -24,7 +33,11 @@ Rails.application.routes.draw do
   
   #Sets route for typeahead.js remote query. Generates a JSON response
   get 'machines/queries/:search' => "machines#queries"
+  #Links the Stripe cancel subscription button to the correct action
+  get "subscriptions/destroy" => "subscriptions#destroy"
 
+  
+  post "subscriptions/webhook"
 
   
   # The priority is based upon order of creation: first created -> highest priority.

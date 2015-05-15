@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Account Settings</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Email</td>
+            <td><%= @user_email %></td>
+          </tr>
+          <tr>
+            <td>Password Reset</td>
+            <td><%= link_to "Reset Password", edit_user_registration_path %></td>
+          </tr>
+          <tr>
+            <td>Last login</td>
+            <td id="last-sign-in" data-last-sign-in = "<%= @last_sign_in %>"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Plan Settings</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Plan</td>
+            <td><%= @current_plan %></td>
+          </tr>
+          <% if @cancel_at_period_end == true %>
+          <tr>
+            <td>Plan Status</td>
+            <td><span class="label label-danger">Canceled</span></td>
+          </tr>
+          <tr>
+            <td>Canceled On</td>
+            <td id="canceled-at" data-canceled-at="<%= @canceled_at %>"></td>
+          </tr>
+          <tr>
+            <td>Plan Ends On</td>
+            <td id="plan-ends-at" data-plan-ends-at="<%= @plan_end_date %>"></td>
+          </tr>
+          <tr>
+            <td class="info" colspan="2">
+              Thank you for your support. You can always renew your subscription later.
+              Please enjoy the remaining <span id="days-remain"></span> on this plan. You will not be charged again.
+            </td>
+          </tr>
+          <% else #cancel at period end false %> 
+            <% if @plan_status == "trialing" %>
+            <tr>
+              <td>Plan Status</td>
+              <td><span class="label label-default">Trial</span></td>
+            </tr>
+            <tr>
+              <td>Trial Remaining</td>
+              <td id="trial-remains" data-trial-end-date="<%= @trial_end_date %>"></td>
+            </tr>
+            <% else #if not trialing %>
+            <tr>
+              <td>Plan Status</td>
+              <td><span class="label label-success">Active</span></td>
+            </tr>
+            <% end # end plan status %>
+          <% if @plan_price == 0 %>
+          <tr>
+            <td>Cost</td>
+            <td>Forever Free</td>
+          </tr>
+          <tr class="active">
+            <td class="text-success">Upgrade Your Plan</td>
+            <td><%= link_to "Start Trial", subscriptions_path, method: :post, class: 'btn btn-success btn-xs' %></td>
+          </tr>
+          <% else %>
+          <tr>
+            <td>Cost</td>
+            <td>$<%= @plan_price %>.00 monthly</td>
+          </tr>
+          <tr>
+            <td>Billing Date</td>
+            <td id="billing-date" data-billing-date="<%= @billing_date %>"></td>
+          </tr>
+          <% end %>
+        <% end %>
+            <% if @plan_price != 0 && @card_type.nil? %>
+            <tr>
+              <td>No Payment Information</td>
+              <td id="payment-user-email" data-payment-user-email="<%= current_user.email %>">
+                <%= form_tag cards_path do %>
+                  
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Add Payment"
+              data-email="<%= current_user.email %>"
+              data-label="Add Payment"></script>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          <% if @current_plan != 'Free Plan' %>
+            <% if @card_type.present? %>
+             <tr>
+              <td>Card</td>
+              <td><strong><%= @card_type %></strong> ending in <%= @card_last_4 %></td>
+            </tr>
+            <% end %>
+            <tr>
+              <td class="text-danger">Cancel Paid Subscription <span class="glyphicon glyphicon-info-sign"></span></td>
+              <td><%= link_to "Cancel", subscription_path, method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</div>

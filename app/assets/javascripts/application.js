@@ -15,6 +15,10 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require moment
 //= require typeahead.bundle.min
 //= require machines_controller
 //= require admin_ajax.js
+//= require subscriptions.js
+//= require users.js
+//= require users/static_pages
